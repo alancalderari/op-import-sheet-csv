@@ -41,9 +41,9 @@ foreach (DataRow row in dataTable.Rows)
     int? itemId = null;
     int? brandId = null;
 
-    if (dataTable.Columns.Contains("Name"))
+    if (dataTable.Columns.Contains("name"))
     {
-        name = row["Name"] as string;
+        name = row["name"] as string;
     }
 
     if (dataTable.Columns.Contains("measurement_unit"))
@@ -83,6 +83,7 @@ foreach (DataRow row in dataTable.Rows)
     {
         await context.ProductVariations.AddRangeAsync(productVariations);
         await context.SaveChangesAsync();
+        productVariations.Clear();
     }
 }
 

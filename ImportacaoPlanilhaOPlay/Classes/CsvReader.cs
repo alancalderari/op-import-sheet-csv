@@ -8,25 +8,6 @@ public static class CsvReader
 {
     public static DataTable ReadCsvToDataTable(string filePath)
     {
-        // var dataTable = new DataTable();
-        //
-        // const char separator = ',';
-        //
-        // using var reader = new StreamReader(filePath, Encoding.UTF8);
-        // var headers = reader.ReadLine()?.Split(separator);
-        //
-        // foreach (var header in headers!)
-        //     dataTable.Columns.Add(header);
-        //
-        // while(!reader.EndOfStream)
-        // {
-        //     var rows = reader.ReadLine()!.Split(separator);
-        //     var dataRow = dataTable.NewRow();
-        //     dataRow.ItemArray = rows;
-        //     dataTable.Rows.Add(dataRow);
-        // }
-        // return dataTable;
-        
         var dataTable = new DataTable();
 
         using var parser = new TextFieldParser(filePath, Encoding.UTF8);

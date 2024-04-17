@@ -43,17 +43,20 @@ foreach (DataRow row in dataTable.Rows)
 
     if (dataTable.Columns.Contains("name"))
     {
-        name = row["name"] as string;
+        var value = row["name"].ToString();
+        name = value == "NULL" ? string.Empty : row["name"].ToString();
     }
 
     if (dataTable.Columns.Contains("measurement_unit"))
     {
-        measurementUnit = row["measurement_unit"] as string;
+        var value = row["measurement_unit"].ToString();
+        measurementUnit = value == "NULL" ? string.Empty : row["measurement_unit"].ToString();
     }
 
     if (dataTable.Columns.Contains("observations"))
     {
-        observations = row["observations"] as string;
+        var value = row["observations"].ToString();
+        observations = value == "NULL" ? string.Empty : row["observations"].ToString();
     }
 
     if (dataTable.Columns.Contains("id") && row["id"] != DBNull.Value)
@@ -74,9 +77,7 @@ foreach (DataRow row in dataTable.Rows)
             brandId = valueNumber;
     }
 
-    var productVariation = new ProductVariation(name, measurementUnit,
-        observations, id,
-        itemId, brandId);
+    var productVariation = new ProductVariation(name, measurementUnit, observations, id, itemId, brandId);
 
     productVariations.Add(productVariation);
     if (productVariations.Count % batchSize == 0 || row == dataTable.Rows[^1])
